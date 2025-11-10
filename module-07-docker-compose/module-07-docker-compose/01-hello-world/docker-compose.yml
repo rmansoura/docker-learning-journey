@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  web:
+    image: caddy:alpine
+    ports:
+      - "8080:80"
+    command: caddy file-server --listen :80 --root /usr/share/caddy
+    volumes:
+      - type: bind
+        source: ./site
+        target: /usr/share/caddy
